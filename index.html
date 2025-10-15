@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MOLTENTIC Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
+      overflow-x: hidden;
+      background: url('images/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    #particles {
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    header, section, footer {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Welcome Overlay -->
+  <div id="welcome-overlay">
+    <div class="welcome-content">
+      <h1>Welcome to Moltentics Portfolio!</h1>
+      <p>Get ready to explore cutting-edge 3D models & builds.</p>
+      <button id="enter-site">Enter Site</button>
+    </div>
+  </div>
+
+  <!-- Particle background -->
+  <canvas id="particles"></canvas>
+
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <h1>MOLTENTIC</h1>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#models">Models</a>
+      <a href="#recent-models">Recent Models</a>
+      <a href="#about">About</a>
+      <a href="#socials">Socials</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="section hero">
+    <div class="hero-text">
+      <h2>Molten Creativity, Solid Design</h2>
+      <p>Explore my cutting-edge 3D models & builds.</p>
+    </div>
+  </section>
+
+  <!-- Models (carousel) -->
+<section id="models" class="section">
+  <h2 class="section-title">Models</h2>
+
+  <div class="model-stage" id="model-stage">
+    <button class="nav-arrow left" id="prevModel" aria-label="Previous model">‹</button>
+
+    <model-viewer
+      id="active-model"
+      src="models/example.glb" 
+      alt="3D Model"
+      camera-controls
+      auto-rotate
+      environment-image="neutral"
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      loading="lazy">
+    </model-viewer>
+
+
+    <button class="nav-arrow right" id="nextModel" aria-label="Next model">›</button>
+  </div>
+
+  <div class="model-meta">
+    <h3 id="model-title">Model Name</h3>
+    <p id="model-description">This is a 3D model description.</p>
+    <p class="hint">Use arrows or drag the model to rotate • Zoom with mouse wheel or pinch</p>
+  </div>
+</section>
+
+
+  <!-- Builds -->
+  <section id="recent-models" class="section">
+    <h2 class="section-title">Recent Models</h2>
+    <p class="section-subtitle">Showcasing my commissioned environments & structures</p>
+    <div id="builds-carousel" class="builds-carousel" aria-label="Builds carousel"></div>
+    <p class="hint">Drag to scroll • Shift + Mouse Wheel works too</p>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section about-section">
+    <h2 class="section-title">About</h2>
+    <div class="about-card">
+      <img src="images/SillyMol.jpg" alt="MOLTENTIC" class="about-img">
+      <div class="about-text">
+        <h3>About Me</h3>
+        <p>I am dedicated to crafting <strong>immersive 3D models and builds</strong> that merge creativity with precision. 
+           My mission is to transform concepts into interactive, high-quality digital assets that leave a lasting impression.</p>
+        <ul class="about-highlights">
+          <li>🔥 Cutting-edge 3D model design</li>
+          <li>🏗️ Custom environment & structure builds</li>
+          <li>⚡ Fast and reliable models</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Socials -->
+  <section id="socials" class="section socials-section">
+    <h2 class="section-title">Socials</h2>
+    <div class="socials-card">
+      <p class="socials-intro">Follow me and stay updated with my latest creations!</p>
+      <ul class="social-links">
+        <li>🎵 <a href="https://www.tiktok.com/@moltentic" target="_blank">TikTok</a></li>
+        <li>🎥 <a href="https://www.youtube.com/@Moltentic" target="_blank">YouTube</a></li>
+        <li>💬 <a href="https://discord.gg/ABhGDFRFDs" target="_blank">Discord</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <script src="data-model.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Welcome Overlay Script -->
+  <script>
+    const overlay = document.getElementById('welcome-overlay');
+    const enterBtn = document.getElementById('enter-site');
+
+    enterBtn.addEventListener('click', () => {
+      overlay.style.opacity = '0';
+      overlay.style.pointerEvents = 'none';
+      setTimeout(() => overlay.remove(), 600);
+    });
+  </script>
+  
+</body>
+</html>
